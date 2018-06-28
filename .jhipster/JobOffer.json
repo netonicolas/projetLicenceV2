@@ -1,0 +1,117 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "jobsjobSkill",
+            "otherEntityName": "jobSkill",
+            "otherEntityRelationshipName": "job"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "idProfilSkillTest",
+            "otherEntityName": "skillTest",
+            "otherEntityRelationshipName": "jobOffer"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "jobjobResponse",
+            "otherEntityName": "jobResponse",
+            "otherEntityRelationshipName": "jobOffer"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "company",
+            "otherEntityName": "company",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "categoryOffer",
+            "otherEntityName": "categoryOffer",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "etude",
+            "otherEntityName": "etude",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "titleOffer",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descriptionOffer",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "salairyMin",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "salairyMax",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "typeOffer",
+            "fieldType": "TypeOffre",
+            "fieldValues": "CDI,CDD,STAGE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateOffer",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "place",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "contact",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180625183245",
+    "entityTableName": "job_offer",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

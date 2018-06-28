@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "skilljobSkill",
+            "otherEntityName": "jobSkill",
+            "otherEntityRelationshipName": "skill"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "skillcandidateSkill",
+            "otherEntityName": "candidateSkill",
+            "otherEntityRelationshipName": "idSkill"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "skillcandidateTrueSkill",
+            "otherEntityName": "candidateTrueSkill",
+            "otherEntityRelationshipName": "idSkill"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "skillskillQuestion",
+            "otherEntityName": "skillQuestion",
+            "otherEntityRelationshipName": "skill"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nameSkill",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180625183250",
+    "entityTableName": "skill",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

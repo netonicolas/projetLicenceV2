@@ -1,0 +1,107 @@
+<div>
+    <h2>
+        <span>Job Offers</span>
+        <button class="btn btn-primary float-right jh-create-entity create-job-offer" [routerLink]="['/', { outlets: { popup: ['job-offer-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down" >
+            Create new Job Offer
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="jobOffers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Title Offer</span></th>
+            <th><span>Description Offer</span></th>
+            <th><span>Salairy Min</span></th>
+            <th><span>Salairy Max</span></th>
+            <th><span>Type Offer</span></th>
+            <th><span>Date Offer</span></th>
+            <th><span>Comment</span></th>
+            <th><span>Place</span></th>
+            <th><span>Contact</span></th>
+            <th><span>Status</span></th>
+            <th><span>Company</span></th>
+            <th><span>Category Offer</span></th>
+            <th><span>Etude</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let jobOffer of jobOffers ;trackBy: trackId">
+                <td><a [routerLink]="['../job-offer', jobOffer.id ]">{{jobOffer.id}}</a></td>
+                <td>{{jobOffer.titleOffer}}</td>
+                <td>{{jobOffer.descriptionOffer}}</td>
+                <td>{{jobOffer.salairyMin}}</td>
+                <td>{{jobOffer.salairyMax}}</td>
+                <td>{{jobOffer.typeOffer}}</td>
+                <td>{{jobOffer.dateOffer | date:'mediumDate'}}</td>
+                <td>{{jobOffer.comment}}</td>
+                <td>{{jobOffer.place}}</td>
+                <td>{{jobOffer.contact}}</td>
+                <td>{{jobOffer.status}}</td>
+                <td>
+                    <div *ngIf="jobOffer.company">
+                        <a [routerLink]="['../company', jobOffer.company?.id ]" >{{jobOffer.company?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="jobOffer.categoryOffer">
+                        <a [routerLink]="['../category-offer', jobOffer.categoryOffer?.id ]" >{{jobOffer.categoryOffer?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="jobOffer.etude">
+                        <a [routerLink]="['../etude', jobOffer.etude?.id ]" >{{jobOffer.etude?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../job-offer', jobOffer.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'job-offer/'+ jobOffer.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'job-offer/'+ jobOffer.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

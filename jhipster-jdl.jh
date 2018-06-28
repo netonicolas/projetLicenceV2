@@ -1,0 +1,115 @@
+	// JDL definition for application 'projetLicence' generated with command 'jhipster export-jdl'
+
+	entity JobOffer (job_offer) {
+	  titleOffer String required,
+	  descriptionOffer String required,
+	  salairyMin Long required,
+	  salairyMax Long required,
+	  typeOffer TypeOffre required,
+	  dateOffer LocalDate required,
+	  comment String,
+	  place String required,
+	  contact String required,
+	  status String required
+	}
+	entity Company (company) {
+	  companyName String required,
+	  telephoneEntreprise String required,
+	  place String required,
+	  siren Long required,
+	  logo String required,
+	  userId Long
+	}
+	
+	entity SkillTest (skill_test) {
+	  date LocalDate required
+	}
+	entity SkillTestResponse (skill_test_response) {
+	  responseSkillTestResponse String required,
+	  date LocalDate required
+	}
+	entity SkillQuestion (skill_question) {
+	  questionSkillQuestion String required,
+	  responseSkillQuestion String required
+	}
+	entity Skill (skill) {
+	  nameSkill String required
+	}
+	entity JobSkill (job_skill) {
+	  level Long required,
+	  optimal Boolean required,
+	  weight Long required,
+	  commentJobSkill String
+	}
+	entity JobResponse (job_response) {
+	  dateResponse LocalDate required,
+	  comment String required
+	}
+	entity CategoryOffer (category_offer) {
+	  nameCategory String required
+	}
+	entity Profil (profil) {
+	  userId Long required
+	}
+	entity EtudeProfil (etude_profil) {
+	  anneeEtudeDebut LocalDate,
+	  anneEtudeFin LocalDate,
+	  comment String
+	}
+	entity Etude (etude) {
+	  libelle String,
+	  niveauEtude NiveauEtude
+	}
+	entity ExperienceProfil (experience_profil) {
+	  anneExperienceDebut LocalDate required,
+	  anneExperienceFin LocalDate required,
+	  comment String
+	}
+	entity Experience (experience) {
+	  libelle String required
+	}
+	entity CandidateSkill (candidate_skill) {
+	  level Long,
+	  comment String
+	}
+	entity CandidateTrueSkill (candidate_true_skill) {
+	  candidateskillid Long required,
+	  level Long,
+	  comment String
+	}
+
+	enum TypeOffre {
+	  CDI,
+	  CDD,
+	  STAGE
+	}
+
+	enum NiveauEtude {
+	  BAC,
+	  LICENCE,
+	  MASTER,
+	  INGENIEUR
+	}
+
+	relationship OneToMany {
+	  Company{company} to JobOffer{company},
+	  CategoryOffer{category} to JobOffer{categoryOffer},
+  	  Skill{skill_jobSkill} to JobSkill{skill required},
+	  JobOffer{jobs_jobSkill} to JobSkill{job required},
+	  Etude{etudeJobOffer} to JobOffer{etude},
+      JobOffer{idProfil_SkillTest} to SkillTest {jobOffer},
+      Profil{profil_candidateSkill} to CandidateSkill{idProfil},
+	  Skill{skill_candidateSkill} to CandidateSkill{idSkill} ,
+	  Profil{profil_candidateTrueSkill} to CandidateTrueSkill{idProfil} ,
+	  Skill{skill_candidateTrueSkill} to CandidateTrueSkill{idSkill} ,
+      SkillTest{skillTest_skillTestResponse}  to SkillTestResponse{skillTest required} ,
+	  Profil{candidat_skillTestResponse}  to  SkillTestResponse{candidat required},
+	  SkillTest{skillTest_SkillQuestion} to SkillQuestion{question required} ,
+	  Skill{skill_skillQuestion} to SkillQuestion{skill required} ,	
+	  Profil{candidat_jobResponse} to  JobResponse{candidat required} ,
+	  JobOffer{job_jobResponse} to JobResponse{jobOffer required} ,
+	  Profil{profil_etudeProfil} to  EtudeProfil{idProfil},
+	  Etude{etude_etudeProfil} to EtudeProfil{idEtude} ,
+	  Profil{profil_experienceProfil} to  ExperienceProfil{idProfil} ,
+	  Experience{experience_experienceProfil} to ExperienceProfil{idExperience} 
+	}

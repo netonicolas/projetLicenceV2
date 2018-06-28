@@ -27,4 +27,5 @@ export class ProfileService {
         }
         return this.profileInfo;
     }
+
 }

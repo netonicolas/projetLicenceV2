@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity CandidateSkill.
+    -->
+    <changeSet id="20180625183259-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="id_profil_id"
+                                 baseTableName="candidate_skill"
+                                 constraintName="fk_candidate_skill_id_profil_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profil"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_skill_id"
+                                 baseTableName="candidate_skill"
+                                 constraintName="fk_candidate_skill_id_skill_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="skill"/>
+
+    </changeSet>
+</databaseChangeLog>

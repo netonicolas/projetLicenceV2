@@ -1,0 +1,97 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myJobSkillLabel">Create or edit a Job Skill</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!jobSkill.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="jobSkill.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_level">Level</label>
+            <input type="number" class="form-control" name="level" id="field_level"
+                [(ngModel)]="jobSkill.level" required/>
+            <div [hidden]="!(editForm.controls.level?.dirty && editForm.controls.level?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.level?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.level?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_optimal">Optimal</label>
+            <input type="checkbox" class="form-control" name="optimal" id="field_optimal"
+                [(ngModel)]="jobSkill.optimal" />
+            <div [hidden]="!(editForm.controls.optimal?.dirty && editForm.controls.optimal?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.optimal?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_weight">Weight</label>
+            <input type="number" class="form-control" name="weight" id="field_weight"
+                [(ngModel)]="jobSkill.weight" required/>
+            <div [hidden]="!(editForm.controls.weight?.dirty && editForm.controls.weight?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.weight?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.weight?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_commentJobSkill">Comment Job Skill</label>
+            <input type="text" class="form-control" name="commentJobSkill" id="field_commentJobSkill"
+                [(ngModel)]="jobSkill.commentJobSkill" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_skill">Skill</label>
+            <select class="form-control" id="field_skill" name="skill" [(ngModel)]="jobSkill.skill"  required>
+                <option *ngIf="!editForm.value.skill" [ngValue]="null" selected></option>
+                <option [ngValue]="skillOption.id === jobSkill.skill?.id ? jobSkill.skill : skillOption" *ngFor="let skillOption of skills; trackBy: trackSkillById">{{skillOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.skill?.dirty && editForm.controls.skill?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.skill?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_job">Job</label>
+            <select class="form-control" id="field_job" name="job" [(ngModel)]="jobSkill.job"  required>
+                <option *ngIf="!editForm.value.job" [ngValue]="null" selected></option>
+                <option [ngValue]="jobOfferOption.id === jobSkill.job?.id ? jobSkill.job : jobOfferOption" *ngFor="let jobOfferOption of joboffers; trackBy: trackJobOfferById">{{jobOfferOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.job?.dirty && editForm.controls.job?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.job?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,80 @@
+
+<div *ngIf="jobOffer">
+    <h2><span>Job Offer</span> {{jobOffer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Title Offer</span></dt>
+        <dd>
+            <span>{{jobOffer.titleOffer}}</span>
+        </dd>
+        <dt><span>Description Offer</span></dt>
+        <dd>
+            <span>{{jobOffer.descriptionOffer}}</span>
+        </dd>
+        <dt><span>Salairy Min</span></dt>
+        <dd>
+            <span>{{jobOffer.salairyMin}}</span>
+        </dd>
+        <dt><span>Salairy Max</span></dt>
+        <dd>
+            <span>{{jobOffer.salairyMax}}</span>
+        </dd>
+        <dt><span>Type Offer</span></dt>
+        <dd>
+            <span>{{jobOffer.typeOffer}}</span>
+        </dd>
+        <dt><span>Date Offer</span></dt>
+        <dd>
+            <span>{{jobOffer.dateOffer | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Comment</span></dt>
+        <dd>
+            <span>{{jobOffer.comment}}</span>
+        </dd>
+        <dt><span>Place</span></dt>
+        <dd>
+            <span>{{jobOffer.place}}</span>
+        </dd>
+        <dt><span>Contact</span></dt>
+        <dd>
+            <span>{{jobOffer.contact}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{jobOffer.status}}</span>
+        </dd>
+        <dt><span>Company</span></dt>
+        <dd>
+            <div *ngIf="jobOffer.company">
+                <a [routerLink]="['/company', jobOffer.company?.id]">{{jobOffer.company?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Category Offer</span></dt>
+        <dd>
+            <div *ngIf="jobOffer.categoryOffer">
+                <a [routerLink]="['/category-offer', jobOffer.categoryOffer?.id]">{{jobOffer.categoryOffer?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Etude</span></dt>
+        <dd>
+            <div *ngIf="jobOffer.etude">
+                <a [routerLink]="['/etude', jobOffer.etude?.id]">{{jobOffer.etude?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'job-offer/'+ jobOffer.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,89 @@
+<div>
+    <h2>
+        <span>Job Skills</span>
+        <button class="btn btn-primary float-right jh-create-entity create-job-skill" [routerLink]="['/', { outlets: { popup: ['job-skill-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down" >
+            Create new Job Skill
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="jobSkills">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Level</span></th>
+            <th><span>Optimal</span></th>
+            <th><span>Weight</span></th>
+            <th><span>Comment Job Skill</span></th>
+            <th><span>Skill</span></th>
+            <th><span>Job</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let jobSkill of jobSkills ;trackBy: trackId">
+                <td><a [routerLink]="['../job-skill', jobSkill.id ]">{{jobSkill.id}}</a></td>
+                <td>{{jobSkill.level}}</td>
+                <td>{{jobSkill.optimal}}</td>
+                <td>{{jobSkill.weight}}</td>
+                <td>{{jobSkill.commentJobSkill}}</td>
+                <td>
+                    <div *ngIf="jobSkill.skill">
+                        <a [routerLink]="['../skill', jobSkill.skill?.id ]" >{{jobSkill.skill?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="jobSkill.job">
+                        <a [routerLink]="['../job-offer', jobSkill.job?.id ]" >{{jobSkill.job?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../job-skill', jobSkill.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'job-skill/'+ jobSkill.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'job-skill/'+ jobSkill.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

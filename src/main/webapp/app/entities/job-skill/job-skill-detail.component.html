@@ -1,0 +1,50 @@
+
+<div *ngIf="jobSkill">
+    <h2><span>Job Skill</span> {{jobSkill.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Level</span></dt>
+        <dd>
+            <span>{{jobSkill.level}}</span>
+        </dd>
+        <dt><span>Optimal</span></dt>
+        <dd>
+            <span>{{jobSkill.optimal}}</span>
+        </dd>
+        <dt><span>Weight</span></dt>
+        <dd>
+            <span>{{jobSkill.weight}}</span>
+        </dd>
+        <dt><span>Comment Job Skill</span></dt>
+        <dd>
+            <span>{{jobSkill.commentJobSkill}}</span>
+        </dd>
+        <dt><span>Skill</span></dt>
+        <dd>
+            <div *ngIf="jobSkill.skill">
+                <a [routerLink]="['/skill', jobSkill.skill?.id]">{{jobSkill.skill?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Job</span></dt>
+        <dd>
+            <div *ngIf="jobSkill.job">
+                <a [routerLink]="['/job-offer', jobSkill.job?.id]">{{jobSkill.job?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'job-skill/'+ jobSkill.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

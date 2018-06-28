@@ -1,0 +1,42 @@
+
+<div *ngIf="candidateSkill">
+    <h2><span>Candidate Skill</span> {{candidateSkill.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Level</span></dt>
+        <dd>
+            <span>{{candidateSkill.level}}</span>
+        </dd>
+        <dt><span>Comment</span></dt>
+        <dd>
+            <span>{{candidateSkill.comment}}</span>
+        </dd>
+        <dt><span>Id Profil</span></dt>
+        <dd>
+            <div *ngIf="candidateSkill.idProfil">
+                <a [routerLink]="['/profil', candidateSkill.idProfil?.id]">{{candidateSkill.idProfil?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Id Skill</span></dt>
+        <dd>
+            <div *ngIf="candidateSkill.idSkill">
+                <a [routerLink]="['/skill', candidateSkill.idSkill?.id]">{{candidateSkill.idSkill?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'candidate-skill/'+ candidateSkill.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

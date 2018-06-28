@@ -1,0 +1,34 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "etudeJobOffer",
+            "otherEntityName": "jobOffer",
+            "otherEntityRelationshipName": "etude"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "etudeetudeProfil",
+            "otherEntityName": "etudeProfil",
+            "otherEntityRelationshipName": "idEtude"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "libelle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "niveauEtude",
+            "fieldType": "NiveauEtude",
+            "fieldValues": "BAC,LICENCE,MASTER,INGENIEUR"
+        }
+    ],
+    "changelogDate": "20180625183256",
+    "entityTableName": "etude",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

@@ -1,0 +1,78 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySkillTestResponseLabel">Create or edit a Skill Test Response</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!skillTestResponse.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="skillTestResponse.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_responseSkillTestResponse">Response Skill Test Response</label>
+            <input type="text" class="form-control" name="responseSkillTestResponse" id="field_responseSkillTestResponse"
+                [(ngModel)]="skillTestResponse.responseSkillTestResponse" required/>
+            <div [hidden]="!(editForm.controls.responseSkillTestResponse?.dirty && editForm.controls.responseSkillTestResponse?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.responseSkillTestResponse?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_date">Date</label>
+            <div class="input-group">
+                <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="skillTestResponse.date"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.date?.dirty && editForm.controls.date?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.date?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_skillTest">Skill Test</label>
+            <select class="form-control" id="field_skillTest" name="skillTest" [(ngModel)]="skillTestResponse.skillTest"  required>
+                <option *ngIf="!editForm.value.skillTest" [ngValue]="null" selected></option>
+                <option [ngValue]="skillTestOption.id === skillTestResponse.skillTest?.id ? skillTestResponse.skillTest : skillTestOption" *ngFor="let skillTestOption of skilltests; trackBy: trackSkillTestById">{{skillTestOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.skillTest?.dirty && editForm.controls.skillTest?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.skillTest?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_candidat">Candidat</label>
+            <select class="form-control" id="field_candidat" name="candidat" [(ngModel)]="skillTestResponse.candidat"  required>
+                <option *ngIf="!editForm.value.candidat" [ngValue]="null" selected></option>
+                <option [ngValue]="profilOption.id === skillTestResponse.candidat?.id ? skillTestResponse.candidat : profilOption" *ngFor="let profilOption of profils; trackBy: trackProfilById">{{profilOption.id}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.candidat?.dirty && editForm.controls.candidat?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.candidat?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

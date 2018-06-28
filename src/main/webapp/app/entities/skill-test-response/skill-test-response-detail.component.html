@@ -1,0 +1,42 @@
+
+<div *ngIf="skillTestResponse">
+    <h2><span>Skill Test Response</span> {{skillTestResponse.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Response Skill Test Response</span></dt>
+        <dd>
+            <span>{{skillTestResponse.responseSkillTestResponse}}</span>
+        </dd>
+        <dt><span>Date</span></dt>
+        <dd>
+            <span>{{skillTestResponse.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Skill Test</span></dt>
+        <dd>
+            <div *ngIf="skillTestResponse.skillTest">
+                <a [routerLink]="['/skill-test', skillTestResponse.skillTest?.id]">{{skillTestResponse.skillTest?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Candidat</span></dt>
+        <dd>
+            <div *ngIf="skillTestResponse.candidat">
+                <a [routerLink]="['/profil', skillTestResponse.candidat?.id]">{{skillTestResponse.candidat?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'skill-test-response/'+ skillTestResponse.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

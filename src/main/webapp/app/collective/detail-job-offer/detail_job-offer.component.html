@@ -1,0 +1,26 @@
+<div *ngIf="jobOffer">
+
+    <h1 >{{jobOffer.titleOffer}}</h1>
+    <h2>{{jobOffer.place}}</h2>
+    <p>Date:{{jobOffer.dateOffer | date: 'dd/MM/yyyy'}}</p>
+    <button>Apply Now</button>
+    <p>Contact: {{jobOffer.contact}}</p>
+    <p>Category:{{jobOffer.categoryOffer.nameCategory}}</p>
+    <div>
+        <h3>Job Description</h3>
+        <p>{{jobOffer.descriptionOffer}}</p>
+        <h3>Job requirement</h3>
+        <p>Etude:{{jobOffer.etude.niveauEtude}}</p>
+        <p>Type:{{jobOffer.typeOffer}}</p>
+
+        <h3>Skills</h3>
+        <p *ngFor="let jobSkill of jobSkills">
+                    {{jobSkill.skill.nameSkill}}
+
+        </p>
+
+
+    </div>
+</div>
+
+

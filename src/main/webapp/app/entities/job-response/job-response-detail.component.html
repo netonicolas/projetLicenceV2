@@ -1,0 +1,42 @@
+
+<div *ngIf="jobResponse">
+    <h2><span>Job Response</span> {{jobResponse.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Comment</span></dt>
+        <dd>
+            <span>{{jobResponse.comment}}</span>
+        </dd>
+        <dt><span>Date Response</span></dt>
+        <dd>
+            <span>{{jobResponse.dateResponse}}</span>
+        </dd>
+        <dt><span>Candidat</span></dt>
+        <dd>
+            <div *ngIf="jobResponse.candidat">
+                <a [routerLink]="['/profil', jobResponse.candidat?.id]">{{jobResponse.candidat?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Job Offer</span></dt>
+        <dd>
+            <div *ngIf="jobResponse.jobOffer">
+                <a [routerLink]="['/job-offer', jobResponse.jobOffer?.id]">{{jobResponse.jobOffer?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'job-response/'+ jobResponse.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

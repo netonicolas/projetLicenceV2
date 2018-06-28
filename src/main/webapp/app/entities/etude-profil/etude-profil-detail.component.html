@@ -1,0 +1,46 @@
+
+<div *ngIf="etudeProfil">
+    <h2><span>Etude Profil</span> {{etudeProfil.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Annee Etude Debut</span></dt>
+        <dd>
+            <span>{{etudeProfil.anneeEtudeDebut | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Anne Etude Fin</span></dt>
+        <dd>
+            <span>{{etudeProfil.anneEtudeFin | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Comment</span></dt>
+        <dd>
+            <span>{{etudeProfil.comment}}</span>
+        </dd>
+        <dt><span>Id Profil</span></dt>
+        <dd>
+            <div *ngIf="etudeProfil.idProfil">
+                <a [routerLink]="['/profil', etudeProfil.idProfil?.id]">{{etudeProfil.idProfil?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Id Etude</span></dt>
+        <dd>
+            <div *ngIf="etudeProfil.idEtude">
+                <a [routerLink]="['/etude', etudeProfil.idEtude?.id]">{{etudeProfil.idEtude?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'etude-profil/'+ etudeProfil.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

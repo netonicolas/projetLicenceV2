@@ -1,0 +1,37 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "idProfil",
+            "otherEntityName": "profil",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "idEtude",
+            "otherEntityName": "etude",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "anneeEtudeDebut",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "anneEtudeFin",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180625183255",
+    "entityTableName": "etude_profil",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

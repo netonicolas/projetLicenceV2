@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "profilcandidateSkill",
+            "otherEntityName": "candidateSkill",
+            "otherEntityRelationshipName": "idProfil"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "profilcandidateTrueSkill",
+            "otherEntityName": "candidateTrueSkill",
+            "otherEntityRelationshipName": "idProfil"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "candidatskillTestResponse",
+            "otherEntityName": "skillTestResponse",
+            "otherEntityRelationshipName": "candidat"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "candidatjobResponse",
+            "otherEntityName": "jobResponse",
+            "otherEntityRelationshipName": "candidat"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "profiletudeProfil",
+            "otherEntityName": "etudeProfil",
+            "otherEntityRelationshipName": "idProfil"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "profilexperienceProfil",
+            "otherEntityName": "experienceProfil",
+            "otherEntityRelationshipName": "idProfil"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "userId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180625183254",
+    "entityTableName": "profil",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

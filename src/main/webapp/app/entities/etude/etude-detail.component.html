@@ -1,0 +1,30 @@
+
+<div *ngIf="etude">
+    <h2><span>Etude</span> {{etude.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Libelle</span></dt>
+        <dd>
+            <span>{{etude.libelle}}</span>
+        </dd>
+        <dt><span>Niveau Etude</span></dt>
+        <dd>
+            <span>{{etude.niveauEtude}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'etude/'+ etude.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

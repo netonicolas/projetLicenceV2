@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "skillTestskillTestResponse",
+            "otherEntityName": "skillTestResponse",
+            "otherEntityRelationshipName": "skillTest"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "skillTestSkillQuestion",
+            "otherEntityName": "skillQuestion",
+            "otherEntityRelationshipName": "question"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "jobOffer",
+            "otherEntityName": "jobOffer",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180625183247",
+    "entityTableName": "skill_test",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

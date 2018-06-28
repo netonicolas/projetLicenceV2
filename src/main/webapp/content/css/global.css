@@ -252,3 +252,46 @@ Social Buttons
     color: #fff;
 }
 /* jhipster-needle-css-add-main JHipster will add new css style */
+
+
+.job-offer-list{
+
+    border: #2d4373 3px ridge;
+    border-radius: 10px ;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.job-listing{
+    margin: 5px;
+    display: flex;
+
+}
+
+
+.job-listing-header__content{
+    display: flex;
+}
+
+.img-company-list-job-offer{
+    width: 10%;
+    height: 10%;
+}
+.job-listing-header__job-details{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: 10%;
+}
+
+.btn-apply{
+    position:absolute;
+    bottom: 0;
+    right: 10%;
+}
+
+
+.job-listing-header__job-details-middle{
+    margin-left: 10%    ;
+}
+

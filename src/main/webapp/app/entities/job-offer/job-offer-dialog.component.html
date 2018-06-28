@@ -1,0 +1,166 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myJobOfferLabel">Create or edit a Job Offer</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!jobOffer.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="jobOffer.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_titleOffer">Title Offer</label>
+            <input type="text" class="form-control" name="titleOffer" id="field_titleOffer"
+                [(ngModel)]="jobOffer.titleOffer" required/>
+            <div [hidden]="!(editForm.controls.titleOffer?.dirty && editForm.controls.titleOffer?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.titleOffer?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_descriptionOffer">Description Offer</label>
+            <input type="text" class="form-control" name="descriptionOffer" id="field_descriptionOffer"
+                [(ngModel)]="jobOffer.descriptionOffer" required/>
+            <div [hidden]="!(editForm.controls.descriptionOffer?.dirty && editForm.controls.descriptionOffer?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.descriptionOffer?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_salairyMin">Salairy Min</label>
+            <input type="number" class="form-control" name="salairyMin" id="field_salairyMin"
+                [(ngModel)]="jobOffer.salairyMin" required/>
+            <div [hidden]="!(editForm.controls.salairyMin?.dirty && editForm.controls.salairyMin?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.salairyMin?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.salairyMin?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_salairyMax">Salairy Max</label>
+            <input type="number" class="form-control" name="salairyMax" id="field_salairyMax"
+                [(ngModel)]="jobOffer.salairyMax" required/>
+            <div [hidden]="!(editForm.controls.salairyMax?.dirty && editForm.controls.salairyMax?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.salairyMax?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.salairyMax?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_typeOffer">Type Offer</label>
+            <select class="form-control" name="typeOffer" [(ngModel)]="jobOffer.typeOffer" id="field_typeOffer"  required>
+                <option value="CDI">CDI</option>
+                <option value="CDD">CDD</option>
+                <option value="STAGE">STAGE</option>
+            </select>
+            <div [hidden]="!(editForm.controls.typeOffer?.dirty && editForm.controls.typeOffer?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.typeOffer?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dateOffer">Date Offer</label>
+            <div class="input-group">
+                <input id="field_dateOffer" type="text" class="form-control" name="dateOffer" ngbDatepicker  #dateOfferDp="ngbDatepicker" [(ngModel)]="jobOffer.dateOffer"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateOfferDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.dateOffer?.dirty && editForm.controls.dateOffer?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateOffer?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_comment">Comment</label>
+            <input type="text" class="form-control" name="comment" id="field_comment"
+                [(ngModel)]="jobOffer.comment" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_place">Place</label>
+            <input type="text" class="form-control" name="place" id="field_place"
+                [(ngModel)]="jobOffer.place" required/>
+            <div [hidden]="!(editForm.controls.place?.dirty && editForm.controls.place?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.place?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_contact">Contact</label>
+            <input type="text" class="form-control" name="contact" id="field_contact"
+                [(ngModel)]="jobOffer.contact" required/>
+            <div [hidden]="!(editForm.controls.contact?.dirty && editForm.controls.contact?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.contact?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                [(ngModel)]="jobOffer.status" required/>
+            <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.status?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_company">Company</label>
+            <select class="form-control" id="field_company" name="company" [(ngModel)]="jobOffer.company" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="companyOption.id === jobOffer.company?.id ? jobOffer.company : companyOption" *ngFor="let companyOption of companies; trackBy: trackCompanyById">{{companyOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_categoryOffer">Category Offer</label>
+            <select class="form-control" id="field_categoryOffer" name="categoryOffer" [(ngModel)]="jobOffer.categoryOffer" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="categoryOfferOption.id === jobOffer.categoryOffer?.id ? jobOffer.categoryOffer : categoryOfferOption" *ngFor="let categoryOfferOption of categoryoffers; trackBy: trackCategoryOfferById">{{categoryOfferOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_etude">Etude</label>
+            <select class="form-control" id="field_etude" name="etude" [(ngModel)]="jobOffer.etude" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="etudeOption.id === jobOffer.etude?.id ? jobOffer.etude : etudeOption" *ngFor="let etudeOption of etudes; trackBy: trackEtudeById">{{etudeOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

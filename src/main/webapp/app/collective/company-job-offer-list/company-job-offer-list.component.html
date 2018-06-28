@@ -1,0 +1,47 @@
+<div *ngFor='let jobOffer of jobOffers' class="content-container job-offer-list" >
+    <article class="job-listing" *ngIf="account.id == jobOffer.company.id">
+            <header class="job-listing-header">
+                <div   class="job-listing-header__content">
+                    <img style="width: 10% " class="img-company-list-job-offer" src={{jobOffer.company.logo}} alt="Logo Alt" itemprop="image">
+                    <div class="job-listing-header__job-details">
+                        <a [routerLink]="['/Detail-Job-offer/', jobOffer.id ]">
+
+                        <div class="job-listing-header__job-details-top">
+                            <h1 class="job-listing-header__job-title" itemprop="title">{{jobOffer.titleOffer}}</h1>
+                            <span class="job-listing-header__company-name" itemprop="hiringOrganization">
+							{{jobOffer.company.companyName}}
+						</span>
+                           <br/>
+                            <span class="job-listing-header__date-posted" itemprop="datePosted">{{jobOffer.dateOffer | date: 'dd/MM/yyyy'}}</span>
+                            <span class="job-listing-header__date-posted dateDiff">Publié il y a 3 jours</span>
+                        </div>
+                        <div class="job-listing-header__job-details-middle">
+                            <table class="job-listing-header__mata-table">
+                                <tr itemprop="baseSalary" itemscope itemtype="http://schema.org/MonetaryAmount">
+                                    <th>Salary</th>
+                                    <td>
+                                        <span class="sr-only" itemprop="currency">GBP</span>
+                                        <span itemprop="value">{{jobOffer.salairyMin}} € - {{jobOffer.salairyMax}} € </span>
+                                    </td>
+                                </tr>
+                                <tr itemprop="jobLocation" itemscope itemtype="http://schema.org/Place">
+                                    <th>Location</th>
+                                    <td itemprop="address">{{jobOffer.company.place}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Category </th>
+                                    <td itemprop="occupationalCategory">{{jobOffer.categoryOffer.nameCategory}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Type</th>
+                                    <td itemprop="employmentType">{{jobOffer.typeOffer |  lowercase }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </header>
+    </article>
+</div>
+

@@ -17,6 +17,13 @@ import { VerifyMyCandidateAdminModule } from './admin/admin.module';
 import { VerifyMyCandidateAccountModule } from './account/account.module';
 import { VerifyMyCandidateEntityModule } from './entities/entity.module';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
+import {ApplyModule} from './collective/applyJobOffer/apply.module'
+
+import {CandidateJobOfferModule} from './collective/job-offer-list/candidate_job-offer.module';
+import {DetailJobOfferModule} from './collective/detail-job-offer/detail_job-offer.module';
+import {CompanyJobOfferModule} from "./collective/company-job-offer-list/company-job-offer-list.module";
+import {CompanyCandidatOfferModule} from "./collective/company-candidat-offer-List/company-candidat-offer-List.module";
+
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
     JhiMainComponent,
@@ -26,6 +33,9 @@ import {
     PageRibbonComponent,
     ErrorComponent
 } from './layouts';
+import {ApplyComponent} from "./collective/applyJobOffer";
+
+
 
 @NgModule({
     imports: [
@@ -37,6 +47,11 @@ import {
         VerifyMyCandidateAdminModule,
         VerifyMyCandidateAccountModule,
         VerifyMyCandidateEntityModule,
+        CandidateJobOfferModule,
+        DetailJobOfferModule,
+        ApplyModule,
+        CompanyJobOfferModule,
+        CompanyCandidatOfferModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

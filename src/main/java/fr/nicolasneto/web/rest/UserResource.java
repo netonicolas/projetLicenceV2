@@ -210,4 +210,10 @@ public class UserResource {
             .stream(userSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
+
+    @GetMapping("/users/id/{id}")
+    @Timed
+    public List<User> findById(@PathVariable Long id) {
+        return userRepository.findById(id);
+    }
 }

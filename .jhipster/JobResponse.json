@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "candidat",
+            "otherEntityName": "profil",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "jobOffer",
+            "otherEntityName": "jobOffer",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "comment",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateResponse",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180625183252",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "job_response",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

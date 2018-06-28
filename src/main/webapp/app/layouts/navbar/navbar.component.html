@@ -18,6 +18,11 @@
                     </span>
                 </a>
             </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a  class="nav-link"   [routerLink]="['/List-Job-offer/', 10,1 ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" >
+                   <span> List Job Offer</span>
+                </a>
+            </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
@@ -29,6 +34,102 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu>
+                    <li>
+                        <a class="dropdown-item" routerLink="job-offer" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Job Offer</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="company" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Company</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="skill-test" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Skill Test</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="skill-test-response" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Skill Test Response</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="skill-question" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Skill Question</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="skill" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Skill</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="job-skill" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Job Skill</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="job-response" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Job Response</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="category-offer" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Category Offer</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="profil" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Profil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="etude-profil" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Etude Profil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="etude" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Etude</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="experience-profil" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Experience Profil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="experience" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Experience</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="candidate-skill" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Candidate Skill</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="candidate-true-skill" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span>Candidate True Skill</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>

@@ -1,0 +1,46 @@
+
+<div *ngIf="experienceProfil">
+    <h2><span>Experience Profil</span> {{experienceProfil.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Anne Experience Debut</span></dt>
+        <dd>
+            <span>{{experienceProfil.anneExperienceDebut | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Anne Experience Fin</span></dt>
+        <dd>
+            <span>{{experienceProfil.anneExperienceFin | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Comment</span></dt>
+        <dd>
+            <span>{{experienceProfil.comment}}</span>
+        </dd>
+        <dt><span>Id Profil</span></dt>
+        <dd>
+            <div *ngIf="experienceProfil.idProfil">
+                <a [routerLink]="['/profil', experienceProfil.idProfil?.id]">{{experienceProfil.idProfil?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Id Experience</span></dt>
+        <dd>
+            <div *ngIf="experienceProfil.idExperience">
+                <a [routerLink]="['/experience', experienceProfil.idExperience?.id]">{{experienceProfil.idExperience?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'experience-profil/'+ experienceProfil.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
