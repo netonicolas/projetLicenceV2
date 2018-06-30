@@ -47,25 +47,32 @@ export class CandidateJobOfferComponent implements OnInit {
         this.activatedRoute.params.subscribe((params) => {
             this.page=params['page'];
             this.limite=params['limite'];
-            this.registerAuthenticationSuccess();
             this.loadAll();
-            this.getJobResponse();
+            this.registerAuthenticationSuccess();
+            //this.getJobResponse();
+
         });
+
     }
 
     registerAuthenticationSuccess() {
-        this.principal.identity().then((account) => {
-            this.account = account;
-        });
+        if(this.isAuthenticated()){
+            this.principal.identity().then((account) => {
+                this.account = account;
+            });
+        }
+
         this.eventManager.subscribe('authenticationSuccess', (message) => {
             this.principal.identity().then((account) => {
                 this.account = account;
             });
         });
-        this.getJobResponse();
+
+
     }
 
     loadAll() {
+        console.log("lapin");
         this.jobOfferService.queryLimite(this.limite,this.page).subscribe(
             (res: HttpResponse<JobOffer[]>) => {
                 this.jobOffers = res.body;

@@ -18,9 +18,12 @@ import java.util.List;
 @Repository
 public interface JobOfferRepository extends JpaRepository<JobOffer, Long> {
 
-    @Query(value = "select * from job_offer where id NOT IN (select id from job_offer LIMIT :Limite)  LIMIT :Limite2",nativeQuery = true)
+    @Query(value = "select * from job_offer where  status='OPEN' and id NOT IN (select id from job_offer where status='OPEN' LIMIT :Limite)  LIMIT :Limite2",nativeQuery = true)
     List<JobOffer> findAllLimit(@Param("Limite")Long i,@Param("Limite2") Long i2);
     @Query(value = "select * from job_offer where company_id= :idCompany",nativeQuery = true)
     List<JobOffer> findByCompanyLimit(@Param("idCompany") Long idCompany);
+    @Query(value = "select count(*) from job_offer where status='OPEN'",nativeQuery = true)
+    long countJobOfferOpen();
+
 
 }

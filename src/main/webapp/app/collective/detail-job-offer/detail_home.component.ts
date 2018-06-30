@@ -47,15 +47,16 @@ export class DetailJobOfferComponent implements OnInit {
     }
 
     load(id) {
-        this.jobOfferService.find(id)
-            .subscribe((jobOfferResponse: HttpResponse<JobOffer>) => {
-                this.jobOffer = jobOfferResponse.body;
-            })
 
         this.jobSkillService.findJobSkillByJobOffer(id).subscribe((res: HttpResponse<JobOffer[]>) => {
             console.log(res.body);
             this.jobSkills=res.body;
         });
+
+        this.jobOfferService.find(id)
+            .subscribe((jobOfferResponse: HttpResponse<JobOffer>) => {
+                this.jobOffer = jobOfferResponse.body;
+            })
     }
 
     isAuthenticated() {

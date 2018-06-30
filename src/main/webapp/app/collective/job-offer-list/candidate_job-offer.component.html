@@ -40,7 +40,7 @@
                         </div>
                         </a>
                         <div class="job-listing-header__job-details-bottom">
-                            <a [routerLink]="['/apply/', jobOffer.id ]" *jhiHasAnyAuthority="'ROLE_CANDIDATE'" class="btn btn-apply">Apply Now</a>
+                            <a  [routerLink]="['/apply/', jobOffer.id ]" *jhiHasAnyAuthority="'ROLE_CANDIDATE'" class="btn btn-apply">Apply Now</a>
                         </div>
                     </div>
                 </div>
@@ -48,5 +48,5 @@
     </article>
 </div>
 <div class=".pagination">
-    <button [ngStyle]="{'background-color': page== i2+1 ? '#40a5ffff':'' }" [routerLink]="['/List-Job-offer/',limite, i2 +1 ]" *ngFor="let i of counter(nbPage); let i2 = index">{{i2 +1}}</button>
+    <button *ngFor="let i of counter(nbPage); let i2 = index" [ngStyle]="{'background-color': page== i2+1 ? '#40a5ffff':'' }" [routerLink]="['/List-Job-offer/',limite, i2 +1 ]" >{{i2 +1}}</button>
 </div>

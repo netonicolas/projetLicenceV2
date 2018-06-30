@@ -295,3 +295,15 @@ Social Buttons
     margin-left: 10%    ;
 }
 
+.div-flex{
+    display: flex;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    justify-content: space-between;
+
+}
+.home-jobOffer{
+    padding: 15px;
+    border: ridge black 1px;
+}

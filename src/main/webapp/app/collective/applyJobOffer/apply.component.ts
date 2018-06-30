@@ -7,14 +7,14 @@ import {Company} from '../../entities/company/company.model';
 import {CompanyService} from '../../entities/company/company.service';
 
 import { Principal } from '../../shared';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import {Profil, ProfilService} from "../../entities/profil";
 import {ProfileService} from "../../layouts";
 import {JobResponseService} from "../../entities/job-response";
 
 import {JobResponse} from "../../entities/job-response";
-import {DatePipe} from "@angular/common";
+
 
 @Component({
     selector: 'jhi-candidate-apply',
@@ -30,6 +30,7 @@ export class ApplyComponent implements OnInit {
     profil: Profil;
     currentSearch: string;
     idJobOffer:number;
+    jobResponse:JobResponse;
 
     constructor(
         private companyService: CompanyService,
@@ -39,6 +40,7 @@ export class ApplyComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private profilService: ProfilService,
         private jobResponseService: JobResponseService,
+        private router: Router,
     ) {
 
         this.currentSearch = this.activatedRoute.snapshot && this.activatedRoute.snapshot.params['search'] ?
@@ -46,6 +48,7 @@ export class ApplyComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.jobResponse=new JobResponse();
         this.activatedRoute.params.subscribe((params) => {
             this.idJobOffer=params['idJobOffer'];
 
@@ -66,16 +69,11 @@ export class ApplyComponent implements OnInit {
         this.jobOfferService.find(this.idJobOffer).subscribe(
             (res:HttpResponse<JobOffer>)=>{
                 this.jobOffer=res.body;
-                let jobResponse= new JobResponse();
-                jobResponse.candidat=this.profil;
-                console.log('candidat:',jobResponse.candidat);
-                jobResponse.jobOffer=this.jobOffer;
-                this.addJobResponse(jobResponse);
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-
     }
+
     getProfil(){
         console.log("acount:",this.account);
         this.profilService.findByUserId(parseInt(this.account.id)).subscribe(
@@ -87,14 +85,20 @@ export class ApplyComponent implements OnInit {
             (res: HttpErrorResponse) => this.onError(res.message)
         );
     }
-    addJobResponse(jobResponse){
+
+    addJobResponse(){
+
+        this.jobResponse.candidat=this.profil;
+        console.log('candidat:',this.jobResponse.candidat);
+        this.jobResponse.jobOffer=this.jobOffer;
         let today= new Date();
-        jobResponse.dateResponse= today.getFullYear()+"-"+("0"+today.getMonth()).slice(-2)+"-"+("0"+today.getDate()).slice(-2) ;
-        jobResponse.comment="lapin";
-        this.jobResponseService.create(jobResponse).subscribe(
+        this.jobResponse.dateResponse= today.getFullYear()+"-"+("0"+today.getMonth()).slice(-2)+"-"+("0"+today.getDate()).slice(-2) ;
+
+        this.jobResponseService.create(this.jobResponse).subscribe(
             (res: HttpResponse<Profil>) => {
                 let response = res.body;
                 console.log('response addJobResponse:',response);
+                this.router.navigate( ['/']);
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );

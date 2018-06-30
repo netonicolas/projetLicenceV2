@@ -154,9 +154,9 @@ public class JobOfferResource {
 
     @GetMapping("/job-offers/count")
     @Timed
-    public int getCountJobOffers( ) {
+    public long getCountJobOffers( ) {
         log.debug("REST request to get count of all JobOffers");
-        return jobOfferRepository.findAll().size();
+        return jobOfferRepository.countJobOfferOpen();
     }
 
     @GetMapping("/job-offers-company/{company}")
